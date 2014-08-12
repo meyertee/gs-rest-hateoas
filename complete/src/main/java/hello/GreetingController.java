@@ -2,6 +2,7 @@ package hello;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +34,7 @@ public class GreetingController {
         return new ResponseEntity<List<Greeting>>(greetings, HttpStatus.OK);
     }
 
-    @RequestMapping("/greeting")
+    @RequestMapping(value = "/greeting", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public HttpEntity<Greeting> greeting(
             @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
